@@ -1,0 +1,6 @@
+# concatenar string w1 com w2
+# exemplo: w1 = aaaaab, w2 = bbbaaaa
+# w3 = w1.w2 = aaaaabbbbaaaa
+# operador de concatenação:  . (ponto)
+x1 = aaaaab, x2 = bbbaaaa
+x3 = x1.x2
