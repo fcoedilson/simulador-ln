@@ -12,7 +12,7 @@ x100 = 1
 #
 # Isto deverá retornar y = 4.
 
-macro m: 'MacroMaiorRtend.l'
+macro m: 'MacroMaiorLtend.l'
 macro a: 'MacroAtribuiX1.l'
 macro f: 'MacroAtribuiX2.l'
 
