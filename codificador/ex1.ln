@@ -1,0 +1,10 @@
+# concatenar string w1 com w2
+# exemplo: w1 = aaaaab, w2 = bbbaaaa
+
+# Esse programa chama a macro concatena.ln passando x1 e x2 como parâmetro
+
+x1 = aaaaab, x2 = bbbaaaa
+
+macro c: 'concatena.ln'
+
+y = c(x1,x2)
