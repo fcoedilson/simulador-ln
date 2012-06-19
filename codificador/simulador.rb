@@ -8,6 +8,7 @@ def processaArquivo(file)
 		puts "Lendo arquivo #{file} ..."
 		lnfile = File.open("#{file}") 
 		newfile = File.new("#{file}.tmp","w+")
+		#newfile.chmod()
 		lines = IO.readlines("#{file}")
 		lines.each { 
 			|line|
@@ -24,15 +25,17 @@ def processaArquivo(file)
 end
 
 def codificaArquivo(file)
-	puts "Procurando arquivo #{file}.tmp"
-	tmpfile = File.open("#{file}.tmp")
-        lines = IO.readlines("#{file}.tmp")
-        lines.each { |line|
-		puts line
+	## o arquivo file não tem comentários
+	puts "Procurando arquivo #{file}"
+	tmpfile = File.open("#{file}")
+	
+	lines = IO.readlines(file)
+	
+	p = /'alfabeto'/.match(lines[0])
+	puts "dasd" + p
+	lines.each { |line|
 		
 	}
-
-
 end
 
 def codificaString(w, alfabeto)
@@ -46,8 +49,9 @@ else
 	if(ARGV.length > 1)
 		puts "ERRO: Informe apenas um arquivo por vez ..."
 	else
-		processaArquivo(ARGV[0])
-		codificaArquivo(ARGV[0])
+	    lnfile = ARGV[0]
+		processaArquivo(lnfile)
+		codificaArquivo(lnfile+".tmp")
 	end
 
 end

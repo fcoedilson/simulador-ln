@@ -3,7 +3,7 @@
 
 # Esse programa chama a macro concatena.ln passando x1 e x2 como parâmetro
 
-alfa={a,b}, x1 = aaaaab, x2 = bbbaaaa
+alfabeto={a,b}, x1 = aaaaab, x2 = bbbaaaa
 
 macro c: 'concatena.ln'
 
