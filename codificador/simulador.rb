@@ -3,12 +3,13 @@
 namefile = nil
 lnfile = nil
 
+# processa o arquivo retirando os espaços em branco e comentários
+# gera arquivo temporário
 def processaArquivo(file)
 	if File::exists?( "#{file}" )
 		puts "Lendo arquivo #{file} ..."
 		lnfile = File.open("#{file}") 
-		newfile = File.new("#{file}.tmp","w+")
-		#newfile.chmod()
+		newfile = File.new("#{file}.tmp","r+")
 		lines = IO.readlines("#{file}")
 		lines.each { 
 			|line|
@@ -24,23 +25,30 @@ def processaArquivo(file)
 	end
 end
 
+# realiza a condificação à do arquivo temporário gerado
 def codificaArquivo(file)
-	## o arquivo file não tem comentários
+
 	puts "Procurando arquivo #{file}"
 	tmpfile = File.open("#{file}")
-	
 	lines = IO.readlines(file)
-	
-	p = /'alfabeto'/.match(lines[0])
-	puts "dasd" + p
+
+	puts "total de linhas: #{lines.length}"
+	# identifica o alfabeto
 	lines.each { |line|
-		
+
+		if line.match(/(alfabeto=)/)
+			puts line.match(/(alfabeto=)/)
+		else
+			#puts "Informe o alfabeto"
+		end
 	}
 end
 
-def codificaString(w, alfabeto)
-	w.each_char {|c| puts c}
-end
+
+#def codificaString(w, alfabeto)
+#	w.each_char {|c| puts c}
+#end
+
 
 if ARGV.length < 1
 	puts "Informe o nome do arquivo. Exemplo (/home/edilson/concatena.ln) :"
@@ -57,4 +65,14 @@ else
 end
 
 
+#def regexLetterNumbers(str)
+#	if str.match(/^\w{8,15}$/ )
+#	  puts "String aceita!"
+#	end
+#end
+
+
+#def regexFone(fone)
+#	fone =~ /[(]\d{2}[)]\s*\d{4}-\d{4}/
+#end
 
