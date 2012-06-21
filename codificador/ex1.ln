@@ -1,9 +1,11 @@
 # concatenar string w1 com w2
 # exemplo: w1 = aaaaab, w2 = bbbaaaa
 # Esse programa chama a macro concatena.ln passando x1 e x2 como parâmetro
+# O alfabeto deve ser informado no início e finalizalizado por ponto-e-vírgula(;)
+# As variáveis são separadas por vírgula(,)
 
-alfabeto={a,b}, x1 = aaaaab, x2 = bbbaaaa
+{a,b}; x1=aa, x2=bb
 
-macro c: 'concatena.ln'
+macro c: 'concatena.l'
 
 y = c(x1,x2)
