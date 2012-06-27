@@ -1,4 +1,4 @@
-{a,b}; x1=aa, x2=bb
+{a,b}; x1=aaaab, x2=bb
 
 macro c: 'concatena.l'
 

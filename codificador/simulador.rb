@@ -35,7 +35,7 @@ def codificaArquivo(file)
 	tmpfile = File.open("#{file}")
 	lines = IO.readlines(file)
 
-	# identifica e as variáveis definidas no programa
+	# identifica as variáveis definidas no programa
 	# as variáveis estão na primeira linha
 
 	# separa o alfabeto das variáveis
@@ -44,42 +44,37 @@ def codificaArquivo(file)
 	alfabeto = alfabeto.sub("}","")
 	simbolos = alfabeto.split(",")
 	base = simbolos.length
-	##puts "base #{base}"
 	
 	# separando variáveis
 	vars = str1[1].split(",")
-	puts vars
-	
-	##base = vars[0].match(/=([0-9])/) # identifica a base
-	##base = base.to_s.gsub("=", "")
 
 	# identifica o valor das variáveis informada
 	# codifica cada variável
 	i = 1;
 	newline = ""
-	
+	varhash = Hash.new
+
 	vars.each { |v|
 		codvar = 0
-		
-			tmp = v.match(/=([a-z]+)/)
-			tmp = tmp.to_s.sub("=","")
-			codvar = varcodigo(base.to_s, tmp)
-			newline = newline + "x#{i}=#{codvar}, "
-			#puts newline
-	
+		tmp = v.match(/=([a-z]+)/)
+		tmp = v.match(/=([a-z]+)/)
+		tmp = tmp.to_s.sub("=","")
+		codvar = varcodigo(base.to_s, tmp)
+		varhash["#{v}"] = codvar
+		newline = newline + "x#{i}=#{codvar}, "
 		i=i+1
 	}
 	
-	newline = newline.sub(0, newline.length-2)
-	
-	puts newline
+	#newline = newline.sub(0, newline.length-2)
+	puts varhash
 
 	# gerando o arquivo de saída em para o simulador-l
+	# neste ponto o programa deve gerar a saída
 	newfilelname = file
 	newfilelname = newfilelname.sub(".tmp", "")
 	newfilelname = newfilelname.sub(".ln", "")
 	newfilel = File.new("#{newfilelname}.l","w+")
-	
+
 	lines.each { |l|
 		newfilel.write("#{l}\n")
 	}
@@ -110,8 +105,14 @@ else
 	else
 	    # arquivo passado por ARGV[0]
 	    lnfile = ARGV[0]
-		processaArquivo(lnfile)
-		codificaArquivo(lnfile+".tmp")
+	    fileok = lnfile.match(/^[0-9a-zA-z]*(.ln)$/)
+	    puts fileok 
+	    if  fileok
+			processaArquivo(lnfile)
+			codificaArquivo(lnfile+".tmp")
+		else 
+			puts "Arquivo inválido ..."
+		end
 	end
 
 end

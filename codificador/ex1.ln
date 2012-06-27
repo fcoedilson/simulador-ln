@@ -4,7 +4,7 @@
 # O alfabeto deve ser informado no início e finalizalizado por ponto-e-vírgula(;)
 # As variáveis são separadas por vírgula(,)
 
-{a,b}; x1=aa, x2=bb
+{a,b}; x1=aaaab, x2=bb
 
 macro c: 'concatena.l'
 
